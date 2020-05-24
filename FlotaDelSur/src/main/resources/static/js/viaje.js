@@ -16,7 +16,7 @@ function ViajesController(opcion) {
 					$("#tipoviaje_id").val($(this).find("td:eq(2)").text());
 					$("#region_id").val($(this).find("td:eq(3)").text());
 					$("#comuna_id").val($(this).find("td:eq(4)").text());
-					$("#vehiculo_id").val($(this).find("td:eq(5)").text());
+					$("#vehiculo_ppu").val($(this).find("td:eq(5)").text());
 					$("#conductor_id").val($(this).find("td:eq(6)").text());
 					$("#viaje_fecha").val($(this).find("td:eq(7)").text());
 					$("#tipopago_id").val($(this).find("td:eq(8)").text());
@@ -46,7 +46,7 @@ function ViajesController(opcion) {
 					$("#tipoviaje_id").val(res.tipoviaje_id);
 					$("#region_id").val(res.region_id);
 					$("#comuna_id").val(res.comuna_id);
-					$("#vehiculo_id").val(res.vehiculo_id);
+					$("#vehiculo_ppu").val(res.vehiculo_ppu);
 					$("#conductor_id").val(res.conductor_id);
 					$("#viaje_fecha").val(res.viaje_fecha);
 					$("#tipopago_id").val(res.tipopago_id);
@@ -68,7 +68,7 @@ function ViajesController(opcion) {
 				'tipoviaje_id': $("#tipoviaje_id").val(),
 				'region_id': $("#region_id").val(),
 				'comuna_id': $("#comuna_id").val(),
-				'vehiculo_id': $("#vehiculo_id").val(),
+				'vehiculo_ppu': $("#vehiculo_ppu").val(),
 				'conductor_id': $("#conductor_id").val(),
 				'viaje_fecha': ( $("#viaje_fecha").val() ? $("#viaje_fecha").val() : "0"),
 				'tipopago_id': ( $("#tipopago_id").val() ? $("#tipopago_id").val() : "0"),
@@ -108,7 +108,7 @@ function ViajesController(opcion) {
 				'region_id': $("#region_id").val(),
 				'comuna_id': $("#comuna_id").val(),
 				'vehiculo_id': $("#vehiculo_id").val(),
-				'conductor_id': $("#conductor_id").val(),
+				'conductor_ppu': $("#conductor_ppu").val(),
 				'viaje_fecha': ( $("#viaje_fecha").val() ? $("#viaje_fecha").val() : "0"),
 				'tipopago_id': ( $("#tipopago_id").val() ? $("#tipopago_id").val() : "0"),
 				'costo': $("#costo").val()

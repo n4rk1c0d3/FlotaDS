@@ -97,8 +97,8 @@
 	    			<input id="comuna_id" type="number" class="form-control" name="comuna_id" required>
 	  			</div>
 	  		   	<div class="input-group">
-	    			<span class="input-group-addon">Vehiculo_id</span>
-	    			<input id="vehiculo_id" type="number" class="form-control" name="vehiculo_id" required>
+	    			<span class="input-group-addon">Vehiculo_ppu</span>
+	    			<input id="vehiculo_ppu" type="number" class="form-control" name="vehiculo_ppu" required>
 	  			</div>
 	  			<div class="input-group">
 	    			<span class="input-group-addon">Conductor_id</span>
@@ -182,21 +182,21 @@
  <div class="row text-center slideanim">
  	<div class="col-sm-4">
  		<div class="thumbnail">
- 			<img th:src="@{/images/sky.jpg}"  width="400" height="300"/>
+ 			<img src="static/images/sky.jpg" th:src="@{/images/sky.jpg}"  width="400" height="300"/>
 	 		<p class="text-dark"><strong>Idas a la nieve</strong></p>
  			<p class="text-dark">Te llevamos al centro de Ski de tu preferencia</p>
  		</div>
  	</div>
  <div class="col-sm-4">
  <div class="thumbnail">
- 	<img src="/images/green.jpg" alt="New York" width="400" height="300">
+ 	<img src="static/images/green.jpg" th:src="@{/images/green.jpg}" alt="New York" width="400" height="300">
  	<p><strong>Viñedos</strong></p>
  	<p>Las mejores rutas del vino para que disfrutes junto a tus seres queridos</p>
  </div>
  </div>
  <div class="col-sm-4">
  	<div class="thumbnail">
- 		<img src="/images/valpo.jpg" alt="San Francisco" width="400" height="300">
+ 		<img src="static/images/valpo.jpg" th:src="@{/images/valpo.jpg}" alt="San Francisco" width="400" height="300">
  			<p><strong>Valparaiso y alrededores</strong></p>
  			<p>Ve y conoce uno de los lugares mas iconicos de Chile</p>
  	</div>
@@ -247,7 +247,7 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script type="text/javascript" src="/js/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="/js/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
 <script src="/js/bootstrap-table.min.js" th:href="@{/js/bootstrap-table.min.js}"></script>
 

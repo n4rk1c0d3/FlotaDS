@@ -22,7 +22,7 @@ public class ViajeDto {
 	private Integer tipoviaje_id;            
 	private Integer region_id;        
 	private Integer comuna_id;
-	private String vehiculo_id;                   
+	private String vehiculo_ppu;                   
 	private Integer conductor_id;       
 	private Date viaje_fecha;       
 	private Integer tipopago_id;
@@ -73,11 +73,11 @@ public class ViajeDto {
 	}
 
 	public String getVehiculo_id() {
-		return vehiculo_id;
+		return vehiculo_ppu;
 	}
 
 	public void setVehiculo_id(String vehiculo_id) {
-		this.vehiculo_id = vehiculo_id;
+		this.vehiculo_ppu = vehiculo_id;
 	}
 
 	public Integer getConductor_id() {
