@@ -14,13 +14,20 @@
 	<packaging>war</packaging>
 	<name>FlotaDelSur</name>
 	<description>Proyecto Spring Flota del Sur</description>
-
 	<properties>
 		<java.version>1.8</java.version>
 		<hibernate.version>5.4.1.Final</hibernate.version>
 	</properties>
-
 	<dependencies>
+	<dependency>
+		  <groupId>org.springframework.boot</groupId>
+		  <artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+		  <groupId>org.springframework.security</groupId>
+		  <artifactId>spring-security-test</artifactId>
+		  <scope>test</scope>
+		</dependency>		
 	<dependency>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -29,7 +36,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
@@ -47,22 +53,22 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-thymeleaf</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 		<dependency>
-		<groupId>nz.net.ultraq.thymeleaf</groupId>
-		<artifactId>thymeleaf-layout-dialect</artifactId>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
 		</dependency>
 		<dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-jdbc</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
 		<dependency>
-		<groupId>com.oracle.ojdbc</groupId>
-		<artifactId>ojdbc8</artifactId>
-		<scope>system</scope>
-		<systemPath>C:\Users\Lenovo\Desktop\apache-tomcat-9.0.31\lib\ojdbc8.jar</systemPath>
+			<groupId>com.oracle.ojdbc</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<scope>system</scope>
+			<systemPath>C:\Users\Lenovo\Desktop\apache-tomcat-9.0.31\lib\ojdbc8.jar</systemPath>
 		</dependency>
 		<dependency>
 				<groupId>com.google.code.gson</groupId>
@@ -73,9 +79,7 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		
 	</dependencies>
-	
 	<build>
 	<finalName>${project_artifactId}##${project_version}</finalName>
 		<plugins>
@@ -88,7 +92,7 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
-					<url>http://localhost:8080/manager/text</url>
+					<url>http://localhost:8090/manager/text</url>
 					<server>TomcatServer</server>
 					<path>/${project.artifactId}</path>
 					<update>true</update>
@@ -96,12 +100,7 @@
 					<password>1234</password>
 				</configuration>
 			</plugin>
-			
-			
-			
-			
-			
-			
+
 		</plugins>
 	</build>
 

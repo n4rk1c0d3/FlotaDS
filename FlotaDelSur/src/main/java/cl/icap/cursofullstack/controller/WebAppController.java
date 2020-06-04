@@ -11,4 +11,9 @@ public class WebAppController {
 	    return "index";
 	}
 
+	@RequestMapping("/login")
+	public String getLogin() {
+	    return "login";
+	}
+	
 }

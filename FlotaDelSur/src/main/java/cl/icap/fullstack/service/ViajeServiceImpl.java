@@ -13,7 +13,7 @@ public class ViajeServiceImpl implements ViajeService {
 	@Autowired
 	ViajeRepository viajeRepository;
 	
-	@Autowired
+	@Override
 	public List<ViajeDto> list(){
 		return viajeRepository.findAll();
 	}
