@@ -1,4 +1,4 @@
-package cl.icap.cursofullstack.controller;
+package cl.icap.fullstack.controller;
 
 import java.io.IOException;
 import java.util.List;
