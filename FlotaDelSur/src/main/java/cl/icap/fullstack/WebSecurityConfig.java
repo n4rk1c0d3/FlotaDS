@@ -19,18 +19,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-				.antMatchers("/", "/home", "/resources/**").permitAll()
+				.antMatchers("/", "/home", "/css/**").permitAll()
+				.antMatchers("/","/index.html","/css/style.css","/viaje.js","/images/green.png","/images/logo.png","sky.png","/images/valpo.png","/images").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
-				.loginPage("/login")
+				.loginPage("/")
 				.permitAll()
 				.and()
 			.logout()
 				.permitAll();
 	}
 
-	@Bean
+	/*@Bean
 	@Override
 	public UserDetailsService userDetailsService() {
 		UserDetails user =
@@ -42,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		return new InMemoryUserDetailsManager(user);
 	}
 
-
+*/
 
 
 	}

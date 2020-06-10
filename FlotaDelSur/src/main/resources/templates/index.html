@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://wwww.thymeleaf.org"> 
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"> 
 <head>
 	<meta charset="utf-8">
 	<title>Flota del sur</title>
@@ -8,7 +8,7 @@
 	<!--  Bootstrap core CSS -->
 	<link href="href=/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
 	<link rel="stylesheet" href="/css/style.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 	<script  src="/js/viaje.js" th:href="@{/js/viaje.js}"></script>
 	
 	<!--Scroll reveal-->
@@ -61,7 +61,7 @@
 <div class="container">
 	    <div class="panel panel-default " id="panel1 ">
 	    	<div class="panel-body ">
-	   	    	<h3>Test cotizador CRUD</h3>
+	   	    	<h3>Cotiza con nosotros</h3>
 	   			<p>
 	   			<div class="btn-group">
 	               	<button type="button" class="btn btn-primary btn-sm" onclick="javascript:ViajesController('list')">Listar</button>
@@ -96,11 +96,11 @@
 	  			</div>
 	  		   	<div class="input-group">
 	    			<span class="input-group-addon">Vehiculo_ppu</span>
-	    			<input id="vehiculo_ppu" type="number" class="form-control" name="vehiculo_ppu" required>
+	    			<input id="vehiculo_ppu" type="text" class="form-control" name="vehiculo_ppu" required>
 	  			</div>
 	  			<div class="input-group">
 	    			<span class="input-group-addon">Conductor_id</span>
-	    			<input id="conductor_id" type="number" class="form-control" name="conductor_id" required>
+	    			<input id="conductor_id" type="text" class="form-control" name="conductor_id" required>
 	  			</div>
 	  			<div class="input-group">
 	    			<span class="input-group-addon">Viaje_fecha</span>
@@ -187,14 +187,14 @@
  	</div>
  <div class="col-sm-4">
  <div class="thumbnail">
- 	<img src="static/images/green.png" th:src="@{/images/green.png}" alt="New York" width="400" height="300">
+ 	<img src="images/green.png" th:src="@{/images/green.png}" alt="New York" width="400" height="300">
  	<p><strong>Viñedos</strong></p>
  	<p>Las mejores rutas del vino para que disfrutes junto a tus seres queridos</p>
  </div>
  </div>
  <div class="col-sm-4">
  	<div class="thumbnail">
- 		<img src="static/images/valpo.png" th:src="@{/images/valpo.png}" alt="San Francisco" width="400" height="300">
+ 		<img src="images/valpo.png" th:src="@{/images/valpo.png}" alt="San Francisco" width="400" height="300">
  			<p><strong>Valparaiso y alrededores</strong></p>
  			<p>Ve y conoce uno de los lugares mas iconicos de Chile</p>
  	</div>
