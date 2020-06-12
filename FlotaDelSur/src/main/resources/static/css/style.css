@@ -54,7 +54,7 @@
     color: #303030;
   }
   .carousel-indicators li {
-    border-color: #f4511e;
+    border-color: #005b7c;
   }
   .carousel-indicators li.active {
     background-color: #303030;
@@ -70,7 +70,7 @@
     font-style: normal;
   }
   .panel {
-    border: 1px solid #f4511e; 
+    border: 1px solid #005b7c; 
     border-radius:0 !important;
     transition: box-shadow 0.5s;
   }
@@ -80,7 +80,7 @@
   .panel-footer .btn:hover {
     border: 1px solid #303030;
     background-color: #fff !important;
-    color: #f4511e;
+    color: #005b7c;
   }
   .panel-heading {
     color: #fff !important;

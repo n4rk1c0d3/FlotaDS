@@ -6,29 +6,30 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--<meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}"/>    -->
 	<!--  Bootstrap core CSS -->
+	
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 	 		<link href="href=/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
 				<link rel="stylesheet" href="/css/style.css">
-	 			<link rel="stylesheet" href="normalize.css">
+	 			<link rel="stylesheet" href="/css/normalize.css">
 				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 						<script  src="/js/viaje.js" th:href="@{/js/viaje.js}"></script>
-	
+						<script  src="/js/valores.js" th:href="@{/js/valores.js}"></script>
+						<!--Scroll reveal-->
+        				<script src="https://unpkg.com/scrollreveal"></script>
 	
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 	
 <!--Navigation-->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default  navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+      <img  src="images/logo.png"  class="img-responsive" alt="Responsive image" width="400" height="100">               
       </button>
-      <img  src="images/logo.png"  class="img-responsive" alt="Responsive image" width="400" height="100">
+      
       <a class="navbar-brand" href="#myPage"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
@@ -52,67 +53,75 @@
 <!-- Cotizador -->
 <div class="container">
 	    <div class="panel panel-default " id="Cotiza">
-	    	<div class="panel-body ">
-	   	    	<h3 class="display-4">Cotiza con nosotros (beta)</h3>
+	    	<div class="panel-body">
+	   	    	<h3 class="display-4">Cotiza con nosotros</h3>
 	   			<p>
 	   			<div class="btn-group">
-	               	<button type="button" class="btn btn-primary btn-sm" onclick="javascript:ViajesController('list')">Listar</button>
-	               	<button type="button" class="btn btn-primary btn-sm" onclick="javascript:ViajesController('get')">Buscar</button>
-	           		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:ViajesController('insert')">Nuevo</button>
-	           		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:ViajesController('update')">Grabar</button>
-	           		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:ViajesController('delete')">Eliminar</button>
+	               	<button type="button" class="btn btn-primary btn-sm" onclick="javascript:ValoresController('list')">Itinerarios</button>
+	               	<button type="button" class="btn btn-primary btn-sm" onclick="javascript:ValoresController('get')">Buscar</button>
+	           		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:ValoresController('insert')">Nuevo</button>
+	           		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:ValoresController('update')">Grabar</button>
+	           		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:ValoresController('delete')">Eliminar</button>
 	            </div>
 	    		<p>
 	    	    <div class="alert alert-danger" id="msg" hidden="true">
 	  			</div>
 	        	<div class="input-group">
-	    			<span class="input-group-addon">Viaje_id</span>
-	    			<input id="viaje_id" type="number" class="form-control" name="viaje_id">
+	    			<span class="input-group-addon">Tramo Id</span>
+	    			<input id="tramo_id" type="text" class="form-control" name="tramo_id">
 	  			</div>
 	  			<p>
 	  			<div class="input-group">
-	    			<span class="input-group-addon">Cliente_id</span>
-	    			<input id="cliente_id" type="number" class="form-control" name="cliente_id" required>
+	    			<span class="input-group-addon">Origen</span>
+	    			<input id="origen" type="text" class="form-control" name="origen" required>
 	  			</div>
 	   			<div class="input-group">
-	    			<span class="input-group-addon">Tipoviaje_id</span>
-	    			<input id="tipoviaje_id" type="number" class="form-control" name="tipoviaje_id" required>
+	    			<span class="input-group-addon">Destino</span>
+	    			<input id="destino" type="text" class="form-control" name="destino" required>
+	  			</div>
+	  			<div class="input-group">
+	    			<span class="input-group-addon">Valor Viaje</span>
+	    			<input id="costo" type="text" class="form-control" name="costo" required>
 	  			</div>
 	     			<div class="input-group">
-	    			<span class="input-group-addon">Region_id</span>
-	    			<input id="region_id" type="number" class="form-control" name="region_id" required>
-	  			</div>
-	   			<div class="input-group">
-	    			<span class="input-group-addon">Comuna_id</span>
-	    			<input id="comuna_id" type="number" class="form-control" name="comuna_id" required>
-	  			</div>
-	  		   	<div class="input-group">
-	    			<span class="input-group-addon">Vehiculo_ppu</span>
-	    			<input id="vehiculo_ppu" type="text" class="form-control" name="vehiculo_ppu" required>
-	  			</div>
-	  			<div class="input-group">
-	    			<span class="input-group-addon">Conductor_id</span>
-	    			<input id="conductor_id" type="number" class="form-control" name="conductor_id" required>
-	  			</div>
-	  			<div class="input-group">
-	    			<span class="input-group-addon">Viaje_fecha</span>
-	    			<input id="viaje_fecha" type="date" class="form-control" name="viaje_fecha" step="0.01" placeholder="0.00" min="0.00" required>
-	  			</div>
-	  			<div class="input-group">
-	    			<span class="input-group-addon">Tipopago_id</span>
-	    			<input id="tipopago_id" type="number" class="form-control" name="tipopago_id" step="0.01" placeholder="0.00" min="0.00" required>
-	  			</div>
-	  			<div class="input-group">
-	    			<span class="input-group-addon">Costo</span>
-	    			<input id="costo" type="number" class="form-control" name="costo" required>
+	    			<span class="input-group-addon">Cantidad Pasajeros</span>
+	    			<input id="cant_pasajeros" type="text" class="form-control" name="cant_pasajeros" required>
 	  			</div>
 	  			<p>
 			</div>
 		</div>
 </div>
 
-
-
+<!-- Modal -->
+	<div id="myModal" class="modal fade"  role="dialog">
+  		<div class="modal-dialog">
+    	<!-- Modal content-->
+    	<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal">Itinerarios</button>
+        		<h4 class="modal-title">.</h4>
+      		</div>
+      		<div class="modal-body">
+      			<div class="table-responsive" style='height:100%' id='tableDivContainer'>
+      				<table class="table table-condensed" id='valoresTable' data-toggle="table" data-height="299">
+		        	<thead><tr>
+						<th data-field="tramo_id">Tramo</th>
+						<th data-field="origen">Origen</th>
+						<th data-field="destino">Destino</th>
+						<th data-field="costo">Valor viaje</th>
+						<th data-field="cant_pasajeros">Cantidad de Pasajeros</th>
+					</tr>
+		        	</thead>
+		        	</table>
+		        </div>
+	      	</div>
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      		</div>
+    	</div>
+		</div>
+	</div>
+	
 </header>
 
 <!-- Quienes somos-->
@@ -287,7 +296,8 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script type="text/javascript" src="/js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>  
+<script src="/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
 <script src="/js/bootstrap-table.min.js" th:href="@{/js/bootstrap-table.min.js}"></script>
 
 <script>
@@ -326,7 +336,45 @@ $(document).ready(function(){
   });
 })
 </script>
+<script>
+      window.sr = ScrollReveal();
+      sr.reveal('.navbar', {
+        duration:2000,
+        origin: 'bottom'
+      });
+      sr.reveal('.header-content-left', {
+        duration:2000,
+        origin: 'top',
+        distance: '300px'
+      });
+      sr.reveal('.header-content-right', {
+        duration:2000,
+        origin: 'right',
+        distance: '300px'
+      });
+      sr.reveal('.header-btn', {
+        duration:2000,
+        origin: 'bottom',
+        delay: '1000'
+      });
+      sr.reveal('.jumbotron text-center', {
+        duration:2000,
+        origin: 'left',
+        distance: '300px',
+        viewFactor: 0.2
+      });
 
+      // Smoot scrolling
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+          });
+        });
+      });
+    </script>
 
  	
 </body>
