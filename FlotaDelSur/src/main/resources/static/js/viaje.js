@@ -9,8 +9,8 @@ function ViajesController(opcion) {
 			url : "/viaje/list",
 			success : function(res) {
 				$('#viajeTable').bootstrapTable('load', res);
-				$('#viajeTable tbody').on('click', 'tr', function () {
-					alert("100");
+				$('#viajeTable tbody').on('click', 'tr', function (){
+					
 					$("#viaje_id").val($(this).find("td:eq(0)").text());
 					$("#cliente_id").val($(this).find("td:eq(1)").text());
 					$("#tipoviaje_id").val($(this).find("td:eq(2)").text());
