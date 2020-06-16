@@ -50,49 +50,74 @@
 <header id="Home">
 <div class="jumbotron text-center">
  <h1 class="display-1">FLOTA DEL SUR</h1>
- <h5 class="h2">Traslado Aeropuerto Santiago</h5>
+ <h5 class="h2">Data Base Manager</h5>
 </div>
 <!-- Cotizador -->
 <div class="container">
 	    <div class="panel panel-default " id="Cotiza">
 	    	<div class="panel-body">
-	   	    	<h3 class="display-4">Cotiza con nosotros</h3>
+	   	    	<h3 class="display-4">Control Operaciones DB</h3>
 	   			<p>
 	   			<div class="btn-group">
-	               	<button type="button" class="btn btn-primary btn-sm" onclick="javascript:ValoresController('list')">Itinerarios</button>
-	               	<button type="button" class="btn btn-primary btn-sm" onclick="javascript:ValoresController('get')">Buscar</button>
-	           		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:ValoresController('insert')">Nuevo</button>
-	           		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:ValoresController('update')">Grabar</button>
-	           		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:ValoresController('delete')">Eliminar</button>
+	               	<button type="button" class="btn btn-primary btn-sm" onclick="javascript:ViajeController('list')">Desplegar Tabla</button>
+	               	<button type="button" class="btn btn-primary btn-sm" onclick="javascript:ViajeController('get')">Buscar</button>
+	           		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:ViajeController('insert')">Nuevo</button>
+	           		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:ViajeController('update')">Grabar</button>
+	           		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:ViajeController('delete')">Eliminar</button>
 	            </div>
 	    		<p>
 	    	    <div class="alert alert-danger" id="msg" hidden="true">
 	  			</div>
 	        	<div class="input-group">
-	    			<span class="input-group-addon">Tramo Id</span>
-	    			<input id="tramo_id" type="text" class="form-control" name="tramo_id">
+	    			<span class="input-group-addon">viaje_Id</span>
+	    			<input id="viaje_id" type="text" class="form-control" name="viaje_id">
 	  			</div>
 	  			<p>
 	  			<div class="input-group">
-	    			<span class="input-group-addon">Origen</span>
-	    			<input id="origen" type="text" class="form-control" name="origen" required>
+	    			<span class="input-group-addon">cliente_id</span>
+	    			<input id="cliente_id" type="text" class="form-control" name="cliente_id" required>
 	  			</div>
 	   			<div class="input-group">
-	    			<span class="input-group-addon">Destino</span>
-	    			<input id="destino" type="text" class="form-control" name="destino" required>
+	    			<span class="input-group-addon">tipoviaje_id</span>
+	    			<input id="tipoviaje_id" type="text" class="form-control" name="tipoviaje_id" required>
 	  			</div>
 	  			<div class="input-group">
-	    			<span class="input-group-addon">Valor Viaje</span>
-	    			<input id="costo" type="text" class="form-control" name="costo" required>
+	    			<span class="input-group-addon">region_id</span>
+	    			<input id="region_id" type="text" class="form-control" name="region_id" required>
 	  			</div>
 	     			<div class="input-group">
-	    			<span class="input-group-addon">Cantidad Pasajeros</span>
-	    			<input id="cant_pasajeros" type="text" class="form-control" name="cant_pasajeros" required>
+	    			<span class="input-group-addon">comuna_id</span>
+	    			<input id="comuna_id" type="text" class="form-control" name="comuna_id" required>
 	  			</div>
-	  			<p>
+	  			</div>
+	     			<div class="input-group">
+	    			<span class="input-group-addon">vehiculo_ppu</span>
+	    			<input id="vehiculo_ppu" type="text" class="form-control" name="vehiculo_ppu" required>
+	  			</div>
+	  			</div>
+	     			<div class="input-group">
+	    			<span class="input-group-addon">conductor_id</span>
+	    			<input id="conductor_id" type="text" class="form-control" name="conductor_id" required>
+	  			</div>
+	  			</div>
+	     			<div class="input-group">
+	    			<span class="input-group-addon">viaje_fecha</span>
+	    			<input id="viaje_fecha" type="text" class="form-control" name="viaje_fecha" required>
+	  			</div>
+	  			
+	  			<div>
+	     			<div class="input-group">
+	    			<span class="input-group-addon">tipopago_id</span>
+	    			<input id="tipopago_id" type="text" class="form-control" name="tipopago_id" required>
+	  			</div>
+	  			<div>
+	     			<div class="input-group">
+	    			<span class="input-group-addon">costo</span>
+	    			<input id="costo" type="text" class="form-control" name="costo" required>
+	  			</div>
+	  			<p>p
 			</div>
 		</div>
-</div>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog" >
@@ -100,16 +125,21 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" >Itinerarios</h4>
+        <h4 class="modal-title" >Listado</h4>
       </div>
       <div class="modal-body">
-       <table class="table table-condensed" id='valoresTable' data-toggle="table" data-height="599">
+       <table class="table table-condensed" id='viajeTable' data-toggle="table" data-height="599">
 		        	<thead><tr>
-						<th data-field="tramo_id">Tramo</th>
-						<th data-field="origen">Origen</th>
-						<th data-field="destino">Destino</th>
-						<th data-field="costo">Costo</th>
-						<th data-field="cant_pasajeros">Pasajeros</th>
+						<th data-field="viaje_id">viaje_id</th>
+						<th data-field="cliente_id">cliente_id</th>
+						<th data-field="tipoviaje_id">tipoviaje_id</th>
+						<th data-field="region_id">region_id</th>
+						<th data-field="comuna_id">comuna_id</th>
+						<th data-field="vehiculo_ppu">vehiculo_ppu</th>
+						<th data-field="conductor_id">conductor_id</th>
+						<th data-field="viaje_fecha">viaje_fecha</th>
+						<th data-field="tipopago_id">tipopago_id</th>
+						<th data-field="costo">costo</th>
 					</tr>
 		        	</thead>
 		        	</table>
@@ -120,7 +150,6 @@
     </div>
   </div>
 </div>
-	
 </header>
 
 <!-- Quienes somos-->

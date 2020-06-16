@@ -24,7 +24,7 @@ public class ValoreServiceImpl implements ValoreService {
 	}
 
 	@Override
-	public ValoresDto get(int tramo_id) {
+	public ValoresDto get(int  tramo_id) {
 		return valoresRepository.getOne(tramo_id) ;
 	}
 

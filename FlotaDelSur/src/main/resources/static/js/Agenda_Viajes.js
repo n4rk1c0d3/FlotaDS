@@ -2,48 +2,56 @@ function ValoresController(opcion) {
 	$("#msg").hide();
 	$("#msg").removeClass("alert-success").addClass("alert-danger");
 	var token = $("meta[name='_csrf']").attr("content");
-
+	
 	switch(opcion){
 	case "list":
 		$.ajax({
 			type : "post",
 			headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
-			url : "/valores/list",
+			url : "/Agenda_Viajes/list",
 			success : function(res) {
-				$('#valoresTable').bootstrapTable('load', res);
-				$('#valoresTable tbody').on('click', 'tr', function () {
-					$("#origen").val($(this).find("td:eq(0)").text());
-					$("#destino").val($(this).find("td:eq(1)").text());
-					$("#costo").val($(this).find("td:eq(2)").text());
-					$("#cant_pasajeros").val($(this).find("td:eq(3)").text());
+				$('#agenda_ViajesTable').bootstrapTable('load', res);
+				
+				$('#agenda_ViajesTable tbody').on('click', 'tr', 'close', function () {
+					$("#id_agenda").val($(this).find("td:eq(0)").text());
+					$("#origen").val($(this).find("td:eq(1)").text());
+					$("#destino").val($(this).find("td:eq(2)").text());
+					$("#costo").val($(this).find("td:eq(3)").text());
+					$("#cant_pasajeros").val($(this).find("td:eq(4)").text());
+					$("#fecha").val($(this).find("td:eq(5)").text());
+					$("#correo").val($(this).find("td:eq(6)").text());
 					$("#myModal .close").click();
 				});
-				$("#myModal").modal({show:true});
+				
+				
+				$("#myModados").modal({show:true});
 			},
 			error : function() {
 				$("#msg").show();
-				$("#msg").html("Error en busqueda de valores.")
+				$("#msg").html("Error en busqueda de agendamiento.")
 			}
 		});       			
 		break;
-		
-		/*
 	case "get":
 		$.ajax({
 			type : "post",
 			headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
-			url : "/valores/get",
-			data : "origen="+$("#origen").val(),
+			url : "/Agenda_Viajes/get",
+			data : "id_agenda="+$("#id_agenda").val(),
 			success : function(res) {
 				if (res == null || res == "") {
 					$("#msg").show();
 					$("#msg").html("No se encontraron registros.");
-				} else {	
-					$("#tramo_id").val(res.origen);
+				} else {
+					
+					$("#id_agenda").val(res.id_agenda);
 					$("#origen").val(res.origen);
 					$("#destino").val(res.destino);
 					$("#costo").val(res.costo);
 					$("#cant_pasajeros").val(res.cant_pasajeros);
+					$("#fecha").val(res.fecha);
+					$("#correo").val(res.correo);
+					
 				}
 			},
 			error : function() {
@@ -52,15 +60,16 @@ function ValoresController(opcion) {
 			}
 		});       			
 		break;
-		
 	case "insert":
 		var json = 
 			{
-				'tramo_id': $("#tramo_id").val(),
+				
 				'origen': $("#origen").val(),
 				'destino': $("#destino").val(),
 				'costo': $("#costo").val(),
-				'cant_pasajeros': $("#cant_pasajeros").val()
+				'cant_pasajeros': $("#cant_pasajeros").val(),
+				'fecha': ( $("#fecha").val() ? $("#fecha").val() : "0"),
+				'correo': $("#correo").val()
 			};
 	
 	    var postData = JSON.stringify(json);
@@ -68,7 +77,7 @@ function ValoresController(opcion) {
 	    $.ajax({
 			type : "post",
 			headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
-			url : "/valores/insert",
+			url : "/Agenda_Viajes/insert",
 			data : postData,
 			contentType : "application/json; charset=utf-8",
 	        dataType : "json",
@@ -91,11 +100,12 @@ function ValoresController(opcion) {
 	case "update":
 		var json = 
 			{
-			'tramo_id': $("#tramo_id").val(),
 			'origen': $("#origen").val(),
 			'destino': $("#destino").val(),
 			'costo': $("#costo").val(),
-			'cant_pasajeros': $("#cant_pasajeros").val() 
+			'cant_pasajeros': $("#cant_pasajeros").val(),
+			'fecha': ( $("#fecha").val() ? $("#fecha").val() : "0"),
+			'correo': $("#correo").val()
 			};
 		;
 
@@ -104,7 +114,7 @@ function ValoresController(opcion) {
 		$.ajax({
 			type : "post",
 			headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
-			url : "/valores/update",
+			url : "/Agenda_Viajes/update",
 			data : postData,
 			contentType : "application/json; charset=utf-8",
 			dataType : "json",
@@ -128,8 +138,8 @@ function ValoresController(opcion) {
 		$.ajax({
 			type : "post",
 			headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
-			url : "/valores/delete",
-			data : "tramo_id="+$("#tramo_id").val(),
+			url : "/Agenda_Viajes/delete",
+			data : "id_agenda="+$("#id_agenda").val(),
 			success : function(res) {
 				if (res == 1) {
 					$("#msg").removeClass("alert-danger").addClass("alert-success");
@@ -150,6 +160,4 @@ function ValoresController(opcion) {
 		$("#msg").show();
 		$("#msg").html("Opción incorrecta.");
 	}
-*/
-}
 }

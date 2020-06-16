@@ -1,5 +1,6 @@
 package cl.icap.fullstack.controller;
 
+
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,25 +16,28 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import cl.icap.fullstack.model.dto.ValoresDto;
-import cl.icap.fullstack.service.ValoreService;
-/* EDITAR DESDE TABLA AGENDA VIAJES /USUARIOS  */
-@Controller 
-@RequestMapping(value="/valores")
-public class ValoresController {
+import cl.icap.fullstack.model.dto.Agenda_ViajesDto;
+import cl.icap.fullstack.service.Agenda_ViajesService;
 
+
+/*llevar para mi codigo con security*/
+@Controller 
+@RequestMapping(value="/Agenda_Viajes")
+public class Agenda_ViajesController {
 	@Autowired
-	ValoreService valoreService;
+	Agenda_ViajesService agenda_ViajesService;
 	
 	
 	@RequestMapping(value="/list")
-	public @ResponseBody List<ValoresDto> ajaxList(HttpServletRequest req, HttpServletResponse res) {
-		return valoreService.list();
+	public @ResponseBody List<Agenda_ViajesDto> ajaxList(HttpServletRequest req, HttpServletResponse res) {
+		return agenda_ViajesService.list();
 	}
 
 	@RequestMapping(value="/get")
-	public @ResponseBody ValoresDto ajaxGet(HttpServletRequest req, HttpServletResponse res) {
-		return valoreService.get(Integer.parseInt(req.getParameter("tramo_id")));
+	public @ResponseBody Agenda_ViajesDto ajaxGet(HttpServletRequest req, HttpServletResponse res) {
+
+		return agenda_ViajesService.get(Integer.parseInt(req.getParameter("id_agenda"))); 
+		
 	}
 	
 	@RequestMapping(value="/insert")
@@ -44,16 +48,19 @@ public class ValoresController {
 		try {
 			requestData = req.getReader().lines().collect(Collectors.joining());
 			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-			ValoresDto valoresDto = gson.fromJson(requestData, ValoresDto.class);
-			valoresDto = valoreService.insert(valoresDto);
+			Agenda_ViajesDto agenda_ViajesDto = gson.fromJson(requestData, Agenda_ViajesDto.class);
+			agenda_ViajesDto = agenda_ViajesService.insert(agenda_ViajesDto);
 			
-			if(valoresDto == null) {
-				rows=0;	
+			if(agenda_ViajesDto != null) {
+				
+				rows=1;
+				
 			}
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-			return rows;
+		return rows;
 			
 		}	
 		
@@ -66,10 +73,10 @@ public class ValoresController {
 		try {
 			requestData = req.getReader().lines().collect(Collectors.joining());
 			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-			ValoresDto valoresDto = gson.fromJson(requestData, ValoresDto.class);
-			valoresDto = valoreService.update(valoresDto);
+			Agenda_ViajesDto agenda_ViajesDto = gson.fromJson(requestData, Agenda_ViajesDto.class);
+			agenda_ViajesDto = agenda_ViajesService.update(agenda_ViajesDto);
 			
-			if(valoresDto == null) {
+			if(agenda_ViajesDto == null) {
 				rows=0;	
 			}
 		} catch (IOException e) {
@@ -85,9 +92,9 @@ public class ValoresController {
 		int rows=0;
 		
 		try {
-			ValoresDto valoresDto = new ValoresDto();
-			valoresDto.setTramo_id(Integer.parseInt(req.getParameter("tramo_id")));
-			valoreService.delete(valoresDto);
+			Agenda_ViajesDto agenda_ViajesDto = new Agenda_ViajesDto();
+			agenda_ViajesDto.setId_agenda(Integer.parseInt(req.getParameter("id_agenda")));
+			agenda_ViajesService.delete(agenda_ViajesDto);
 			rows=1;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -96,6 +103,5 @@ public class ValoresController {
 			
 		}	
 		
-	
-}
 
+}
