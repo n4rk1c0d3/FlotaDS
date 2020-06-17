@@ -18,18 +18,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-				.antMatchers("/", "index", "/css/*", "/js/*", "/images/*", "/fonts/*").permitAll()
+				.antMatchers("/", "index", "/css/*", "/js/*", "/images/*", "/fonts/*","/valores/**").permitAll()
 				.anyRequest()
 				.authenticated()
-				.and()
+				.and()/*
 			.formLogin()
 				.loginPage("/")
 				.permitAll()
-				.and()
+				.and() */
 			.logout()
 				.permitAll();
 		}
-	
+	/*
 	public UserDetailsService userDetailsService() {
 		UserDetails user =
 				User.withDefaultPasswordEncoder()
@@ -40,6 +40,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		return new InMemoryUserDetailsManager(user);
 		
-		
+		*/
 	}
-}
+	

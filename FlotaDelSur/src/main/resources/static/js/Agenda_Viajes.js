@@ -1,4 +1,4 @@
-function ValoresController(opcion) {
+function Agenda_ViajesController(opcion) {
 	$("#msg").hide();
 	$("#msg").removeClass("alert-success").addClass("alert-danger");
 	var token = $("meta[name='_csrf']").attr("content");
