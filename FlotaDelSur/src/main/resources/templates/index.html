@@ -4,11 +4,14 @@
 	<meta charset="utf-8">
 	<title>Flota del sur</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="/images/favicon (1).ico" type="image/x-icon">
+	<link rel="icon" href="/images/favicon (1).ico" type="image/x-icon">
 	<meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}"/>
 	<!--  Bootstrap core CSS -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 	<link href="href=/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+	
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/normalize.css">
 	<link href="/css/bootstrap-table.min.css" rel="stylesheet" th:href="@{/css/bootstrap-table.min.css}"/>
@@ -17,8 +20,9 @@
 	<script  src="/js/viaje.js" th:href="@{/js/viaje.js}"></script>
 	<script  src="/js/Agenda_Viajes.js" th:href="@{/js/Agenda_Viajes.js}"></script>
 	<script  src="/js/valores.js" th:href="@{/js/valores.js}"></script>
-						
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script type="text/javascript" src="/js/jquery-3.4.1.js"></script>
+	
 	
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -55,7 +59,7 @@
   <form action="/action_page.php">
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="text" class="form-control" id="correo" placeholder="Ingresa correo" name="email">
+      <input type="email" class="form-control" id="emailuno" placeholder="Ingresa correo" name="email">
     </div>
     <div class="form-group">
       <label for="pwd">Password:</label>
@@ -75,20 +79,20 @@
 <header id="Home">
 <div class="jumbotron text-center">
  <h1 class="display-1">FLOTA DEL SUR</h1>
- <h5 class="h2">Traslado Aeropuerto Santiago</h5>
+ <h5 class="h2">TOURS Y TRANSFER</h5>
 </div>
 <!-- Cotizador -->
 <div class="container">
 	    <div class="panel panel-default " id="Cotiza">
 	    	<div class="panel-body ">
-	   	    	<h3 class="display-4">Cotiza con nosotros</h3>
+	   	    	<h3 class="display-4">COTIZA CON NOSOTROS</h3>
 	   			<p>
 	   			<div class="btn-group">
 	               	<button type="button" class="btn btn-primary btn-sm" onclick="javascript:ValoresController('list')">Itinerarios</button>
 	           
 	            </div>
 	    		<p>
-	    	    <div class="alert alert-danger" id="msg" hidden="false">
+	    	    <div  class="alert" id="info" >
 	  			</div> 
 	        	<div class="input-group">
 	    			<span class="input-group-text shadow-sm">Origen</span>
@@ -126,8 +130,8 @@
 	  		<div class="btn-group">
 	  			<button type="button" class="btn btn-primary btn-sm" onclick="javascript:Agenda_ViajesController('insert')">Agendar</button>
 			</div>
+			</div>
 		</div>
-</div>
 </div>
 
 <!-- Modal -->
@@ -137,13 +141,11 @@
     	<div class="modal-content">
       		<div class="modal-header">
       		<h4 class="modal-title">ITINERARIOS</h4>
-        	<!-- <button type="button" class="close" data-dismiss="modal">Cerrar</button>  -->	
       		</div>
       		<div class="modal-body">
       			<div class="table-responsive" style='height:100%' id='tableDivContainer'>
       				<table class="table table-condensed" id='valoresTable' data-toggle="table" data-height="299">
 		        	<thead><tr>
-		        		<!-- <th data-field="tramo_id">ID</th>  --> 
 						<th data-field="origen">Origen</th>
 						<th data-field="destino">Destino</th>
 						<th data-field="costo">Valor</th>
@@ -374,8 +376,8 @@ $(document).ready(function(){
 })
 </script>
 
+<!-- <script src="/js/bootstrap-table.min.js" th:href="@{/js/bootstrap-table.min.js}"></script>  -->
 
 
  	
 </body>
-</html>

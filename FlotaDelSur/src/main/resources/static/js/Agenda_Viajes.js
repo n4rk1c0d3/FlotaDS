@@ -1,18 +1,17 @@
 function Agenda_ViajesController(opcion) {
-	$("#msg").hide();
-	$("#msg").removeClass("alert-success").addClass("alert-danger");
+	$("#info").hide();
+	$("#info").removeClass("alert-success").addClass("alert-danger");
 	var token = $("meta[name='_csrf']").attr("content");
 	
 	switch(opcion){
 	case "list":
 		$.ajax({
 			type : "post",
-			headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
+		    headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
 			url : "/Agenda_Viajes/list",
 			success : function(res) {
 				$('#agenda_ViajesTable').bootstrapTable('load', res);
-				
-				$('#agenda_ViajesTable tbody').on('click', 'tr', 'close', function () {
+				$('#agenda_ViajesTable tbody').on('click', 'tr',  function () {
 					$("#id_agenda").val($(this).find("td:eq(0)").text());
 					$("#origen").val($(this).find("td:eq(1)").text());
 					$("#destino").val($(this).find("td:eq(2)").text());
@@ -35,7 +34,7 @@ function Agenda_ViajesController(opcion) {
 	case "get":
 		$.ajax({
 			type : "post",
-			headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
+		    headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
 			url : "/Agenda_Viajes/get",
 			data : "id_agenda="+$("#id_agenda").val(),
 			success : function(res) {
@@ -69,31 +68,31 @@ function Agenda_ViajesController(opcion) {
 				'costo': $("#costo").val(),
 				'cant_pasajeros': $("#cant_pasajeros").val(),
 				'fecha': ( $("#fecha").val() ? $("#fecha").val() : "0"),
-				'correo': $("#correo").val()
+				'correo': ( $("#correo").val() ? $("#correo").val() : "0"),
 			};
 	
 	    var postData = JSON.stringify(json);
 
 	    $.ajax({
 			type : "post",
-			headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
 			url : "/Agenda_Viajes/insert",
+			headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
 			data : postData,
 			contentType : "application/json; charset=utf-8",
 	        dataType : "json",
 			success : function(res) {
 				if (res == 1) {
-					$("#msg").removeClass("alert-danger").addClass("alert-success");
-					$("#msg").show();
-					$("#msg").html("Registro ingresado correctamente.");
+					$("#info").removeClass("alert-danger").addClass("alert-success");
+					$("#info").show();
+					$("#info").html("Su viaje ha sido agendado.");
 				} else {
-					$("#msg").show();
-					$("#msg").html("No se pudo ingresar el registro.");
+					$("#info").show();
+					$("#info").html("No se pudo agendar su viaje.");
 				}
 			},
 			error : function() {
-				$("#msg").show();
-				$("#msg").html("No se pudo ingresar el registro.");
+				$("#info").show();
+				$("#info").html("error al agendar el viaje.");
 			}
 		});       	
 	    break;
@@ -161,3 +160,4 @@ function Agenda_ViajesController(opcion) {
 		$("#msg").html("Opción incorrecta.");
 	}
 }
+
