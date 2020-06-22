@@ -10,10 +10,9 @@ public class WebAppController {
 	public String getHome() {
 	    return "index";
 	}
-/*
-	@RequestMapping("/login")
-	public String getLogin() {
-	    return "DBA";
+	@RequestMapping("/adminPage")
+	public String getAdmin() {
+	    return "adminPage";
 	}
-	*/
+
 }
