@@ -51,7 +51,7 @@
 	</nav>
 
 <!-- Log In -->
-<div id="login" class="collapse">
+ <div id="login" class="collapse">
 	<div class="container">
  		 <h2>LOGIN</h2>
  		 
@@ -60,8 +60,8 @@
         		</div>
  <div class="alert alert-info" th:if="${param.logout}">
             		Sesión cerrada.
-        		</div>
-  <form th:action="@{/admPage}" method="post"> 
+        		</div> 
+  <form th:action="@{/login}" method="post"> 
     <div class="form-group">
       <label for="email">Email:</label>
       <input type="text" class="form-control" id="username" placeholder="Nombre Usuario" name="name">

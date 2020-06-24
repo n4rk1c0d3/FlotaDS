@@ -16,7 +16,10 @@ public class WebAppController {
 	}
 	
 	
-
+	@RequestMapping("/login")	
+	public String getLogin() {
+		return "adminPage";
+	}
 
 	
 	
